@@ -1,4 +1,6 @@
 .fun
 .s
 node_modules
-public/node_modules
+code/public/node_modules
+.idea
+.vscode
