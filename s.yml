@@ -8,13 +8,13 @@ services:
     props: #  组件的属性值
       region: cn-hangzhou
       service:
-        name: todo-list-service
+        name: demo
         logConfig: auto
       function:
-        name: todo-list
+        name: todoList
         description: todoList app
         runtime: nodejs12
-        codeUri: './'
+        codeUri: './code'
         handler: index.handler
         memorySize: 256
         timeout: 60
