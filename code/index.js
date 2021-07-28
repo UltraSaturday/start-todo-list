@@ -4,7 +4,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
-
+const { execSync } = require('child_process');
 // initial todo list
 let todos = [
   {
@@ -24,6 +24,14 @@ const staticBasePath = path.join('public', 'build');
 const app = express();
 app.all("/", (req, resp) => {
   resp.setHeader('Content-Type', 'text/html');
+  try {
+    console.log('\n***test fc internal endpoint***');
+    const res = execSync('curl --connect-timeout 3 https://1.cn-hangzhou-internal.fc.aliyuncs.com');
+    console.log();
+    console.log(res.toString('utf8'));
+  } catch (e) {
+    console.log('error when exec curl command.');
+  }
   resp.send(fs.readFileSync('./public/build/index.html', 'utf8'));
 });
 
@@ -98,7 +106,7 @@ app.get('/api/removeTodo', (req, resp) => {
   const todosIndex = todos.findIndex((todo) => todo.id === id);
   if (todosIndex !== -1) {
     todos.splice(todosIndex, 1);
-  } 
+  }
   resp.send(JSON.stringify(todos));
 });
 
