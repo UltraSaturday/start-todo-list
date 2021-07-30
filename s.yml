@@ -33,5 +33,5 @@ services:
           protocol: HTTP
           routeConfigs:
             - path: /*
-              serviceName: todo-list-service
-              functionName: todo-list
+              serviceName: demo
+              functionName: todoList

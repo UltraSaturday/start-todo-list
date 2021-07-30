@@ -7,7 +7,14 @@
 1. 注册[阿里云](https://www.aliyun.com/)账号
 2. 开通[函数计算](https://fc.console.aliyun.com/fc/)
 3. 下载 nodejs
+- [macos](https://qianfeng-test-buc.oss-accelerate.aliyuncs.com/start_todo_list/nodejs/node-v14.17.3.pkg)
+- [windows x64](https://qianfeng-test-buc.oss-accelerate.aliyuncs.com/start_todo_list/nodejs/node-v14.17.3-x64.msi)
+- [windows x86](https://qianfeng-test-buc.oss-accelerate.aliyuncs.com/start_todo_list/nodejs/node-v14.17.3-x86.msi)
 4. 下载 [Serverless Devs](http://www.serverless-devs.com/docs/install)
+5. 配置阿里云密钥:
+```bash
+$ s config add --AccessKeyID xxx --AccessKeySecret xxx --AccountID xxx -a default
+```
 
 ### 可选条件
 
@@ -16,6 +23,8 @@
 1. 开通[阿里云镜像服务](https://cr.console.aliyun.com/)
 2. 开通[阿里云日志服务](https://sls.console.aliyun.com/)
 3. 安装 docker
+- [macos](https://qianfeng-test-buc.oss-accelerate.aliyuncs.com/start_todo_list/docker/Docker.dmg)
+- [windows](https://qianfeng-test-buc.oss-accelerate.aliyuncs.com/start_todo_list/docker/Docker%20Desktop%20Installer.exe)
 
 ## 动手实践
 
@@ -63,6 +72,13 @@ $ s build --use-docker
 可以通过 proxied 系列指令，快速进行端云联调操作:
 
 ```bash
+# 设置环境变量 DISABLE_BIND_MOUNT_TMP_DIR，用于关闭本地函数容器挂载本机目录到 /tmp 的能力
+
+# For Windows
+$ set DISABLE_BIND_MOUNT_TMP_DIR=true
+# For Macos
+$ export DISABLE_BIND_MOUNT_TMP_DIR=true
+
 # 启动准备环境和辅助资源
 $ s proxied setup --config vscode --debug-port 3000
 ```
@@ -88,6 +104,14 @@ $ s proxied invoke
  指令来进行调试，详情请参考[这里](https://github.com/devsapp/fc/blob/main/docs/Usage/local.md)。
 
 ```bash
+# 设置环境变量 DISABLE_BIND_MOUNT_TMP_DIR，用于关闭本地函数容器挂载本机目录到 /tmp 的能力
+
+# For Windows
+$ set DISABLE_BIND_MOUNT_TMP_DIR=true
+# For Macos
+$ export DISABLE_BIND_MOUNT_TMP_DIR=true
+
+# 启动本地调试
 $ s local start
 [2021-07-23T11:25:43.197] [INFO ] [S-CLI] - Start ...
 [2021-07-23T11:25:45.473] [INFO ] [FC-LOCAL-INVOKE] - Using trigger for start: name: http-trigger
