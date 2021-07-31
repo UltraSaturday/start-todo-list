@@ -98,6 +98,8 @@ $ s proxied invoke
    ![img](https://img.alicdn.com/imgextra/i1/O1CN01sE914X1IBdKZMlqgN_!!6000000000855-2-tps-3572-2238.png)
 3. 在终端执行 `s proxied invoke` 指令
 
+在端云联调完成后，需要执行 `s proxied clean` 指令来清理本地环境以及辅助资源。
+
 #### 本地调试
 
 本示例是 http 函数，因此使用 `local start` 指令来进行本地调试，若是 event 函数，需要使用 `local invoke`
